@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.a01710367examen.data.models.DBCharacter
 import com.example.a01710367examen.databinding.ItemCharacterBinding
 
-class CharactersAdapter :
+class CharactersAdapter(private val onCharacterClick: (DBCharacter) -> Unit) :
     ListAdapter<DBCharacter, CharactersAdapter.CharacterViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
@@ -20,6 +20,10 @@ class CharactersAdapter :
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val character = getItem(position)
         holder.bind(character)
+        // Añadir evento click
+        holder.itemView.setOnClickListener {
+            onCharacterClick(character)
+        }
     }
 
     class CharacterViewHolder(private val binding: ItemCharacterBinding) :
