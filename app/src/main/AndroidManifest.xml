@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.A01710367EXAMEN"
         tools:targetApi="31">
-
+        <activity
+            android:name=".framework.views.CharacterDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".framework.views.MainActivity"
             android:exported="true"
