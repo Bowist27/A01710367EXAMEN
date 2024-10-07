@@ -1,4 +1,4 @@
-package com.example.a01710367examen.framework.views
+package com.example.a01710367examen.framework.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,9 +26,9 @@ class CharactersAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(character: DBCharacter) {
-            Glide.with(binding.imageView.context)
+            Glide.with(binding.characterImage.context)
                 .load(character.image)
-                .into(binding.imageView)
+                .into(binding.characterImage)
         }
     }
 
