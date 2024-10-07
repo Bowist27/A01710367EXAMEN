@@ -6,6 +6,6 @@ class Repository {
     private val apiService = NetworkModuleDI.provideAPIService()
 
     suspend fun getCharacters(limit: Int): CharactersResponse {
-        return apiService.getCharacters(limit) // Aquí puedes pasar la lógica de paginación si es necesario
+        return apiService.getCharacters(limit)
     }
 }

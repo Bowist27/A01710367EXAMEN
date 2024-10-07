@@ -7,10 +7,10 @@ data class CharactersResponse(
 data class DBCharacter(
     val id: Int,
     val name: String,
-    val ki: String, // Añadir ki
-    val maxKi: String, // Añadir maxKi
-    val race: String, // Añadir race
-    val gender: String, // Añadir gender
-    val description: String, // Añadir description
+    val ki: String,
+    val maxKi: String,
+    val race: String,
+    val gender: String,
+    val description: String,
     val image: String
 )

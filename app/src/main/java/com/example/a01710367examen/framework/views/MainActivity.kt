@@ -30,7 +30,13 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupObservers()
 
-        loadCharacters() // Cargar los personajes inicialmente
+        // Cargar los personajes inicialmente
+        loadCharacters()
+
+        // Configurar el botón de filtro de Saiyans
+        binding.filterSaiyanButton.setOnClickListener {
+            viewModel.filterByRace("Saiyan") // Llamar al filtro
+        }
     }
 
     private fun initializeBinding() {

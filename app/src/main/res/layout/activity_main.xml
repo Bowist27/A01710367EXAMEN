@@ -6,10 +6,17 @@
 
     <!-- Botón de filtro -->
     <Button
-        android:id="@+id/filterButton"
+        android:id="@+id/filterSaiyanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filtrar por Ki" />
+        android:text="Mostrar Saiyans" />
+
+    <Button
+        android:id="@+id/resetFilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restablecer"
+        android:layout_marginStart="16dp" />
 
     <!-- RecyclerView para mostrar personajes -->
     <androidx.recyclerview.widget.RecyclerView
