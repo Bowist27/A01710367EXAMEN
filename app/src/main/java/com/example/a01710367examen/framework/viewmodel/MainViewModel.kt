@@ -8,10 +8,15 @@ import com.example.a01710367examen.data.network.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
-    private fun myFunction() {
+    val charactersLiveData = MutableLiveData<List<DBCharacter>>()
+    private val repository = Repository()
+
+    fun getCharacters(limit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            val response = repository.getCharacters(limit)
+            charactersLiveData.postValue(response.items)
         }
     }
 }

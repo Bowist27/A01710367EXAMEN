@@ -1,16 +1,18 @@
 package com.example.a01710367examen.data.network
 
-class APIClient {
-    private lateinit var api: APIService
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-    suspend fun getSomething(parameter: String): String? {
-        api = NetworkModuleDI()
-        return try {
-            api.getSomething(parameter)
-        } catch (e: Exception) { // Catch other exceptions
-            e.printStackTrace()
-            null
+class APIClient {
+
+    companion object {
+        private const val BASE_URL = "https://dragonball-api.com/api/"
+
+        fun getClient(): Retrofit {
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         }
     }
-
 }

@@ -4,23 +4,23 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.a01710367examen.R
-import com.example.a01710367examen.data.network.APIClient
-import com.example.a01710367examen.data.network.Repository
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a01710367examen.databinding.ActivityMainBinding
 import com.example.a01710367examen.framework.viewmodel.MainViewModel
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
+    private lateinit var adapter: CharactersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initializeBinding()
-//        initializeObservers()
+        setupRecyclerView()
+        setupObservers()
 
-        // viewModel.get...
+        viewModel.getCharacters(10) // Llamada para obtener los personajes
     }
 
     private fun initializeBinding() {
@@ -28,6 +28,15 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    private fun setupRecyclerView() {
+        adapter = CharactersAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = adapter
+    }
 
-
+    private fun setupObservers() {
+        viewModel.charactersLiveData.observe(this, Observer { characters ->
+            adapter.submitList(characters)
+        })
+    }
 }
