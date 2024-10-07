@@ -9,14 +9,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-
     val charactersLiveData = MutableLiveData<List<DBCharacter>>()
     private val repository = Repository()
+    private val allCharacters = mutableListOf<DBCharacter>() // Lista de todos los personajes
 
     fun getCharacters(limit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = repository.getCharacters(limit)
-            charactersLiveData.postValue(response.items)
+            allCharacters.addAll(response.items) // Agregar nuevos personajes a la lista
+            charactersLiveData.postValue(allCharacters) // Publicar la lista actualizada
         }
     }
 }
